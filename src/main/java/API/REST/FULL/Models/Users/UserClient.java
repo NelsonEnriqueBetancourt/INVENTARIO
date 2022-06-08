@@ -1,0 +1,36 @@
+package API.REST.FULL.Models.Users;
+
+import API.REST.FULL.Models.Products.Products;
+import API.REST.FULL.Models.Roles.RolCliente;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "Usuarios")
+public class UserClient {
+
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Integer id;
+        @Column(name = "Nombre_User")
+        private String Name;
+        @Column(name = "Apellido_User")
+        private String lastName;
+        @Column(name = "Contraseña_User")
+        private String  Password;
+
+        @OneToMany
+        private Set<Products> ModuloCompras=new HashSet<>();
+
+
+}
